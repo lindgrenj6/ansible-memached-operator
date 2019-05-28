@@ -1,6 +1,4 @@
 ---
-# tasks file for memcached
----
 - name: start memcached
   k8s:
     definition:
@@ -10,7 +8,7 @@
         name: '{{ meta.name }}-memcached'
         namespace: '{{ meta.namespace }}'
       spec:
-        replicas: "{{size}}"
+        replicas: "{{ size }}"
         selector:
           matchLabels:
             app: memcached

@@ -20,16 +20,16 @@ spec:
           - /tmp/ansible-operator/runner
           - stdout
           # Replace this with the built image name
-          image: quay.io/jlindgren/memcached-operator:v0.0.1
-          imagePullPolicy: Always
+          image: "quay.io/jlindgren/memcached-operator:v0.0.1"
+          imagePullPolicy: "Always"
           volumeMounts:
           - mountPath: /tmp/ansible-operator/runner
             name: runner
             readOnly: true
         - name: operator
           # Replace this with the built image name
-          image: quay.io/jlindgren/memcached-operator:v0.0.1
-          imagePullPolicy: Always
+          image: "quay.io/jlindgren/memcached-operator:v0.0.1"
+          imagePullPolicy: "Always"
           volumeMounts:
           - mountPath: /tmp/ansible-operator/runner
             name: runner
@@ -44,6 +44,8 @@ spec:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
               value: "memcached-operator"
+            - name: ANSIBLE_VERBOSITY
+              value: "4"
       volumes:
         - name: runner
           emptyDir: {}
